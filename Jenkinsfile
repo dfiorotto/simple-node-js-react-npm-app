@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'node:6-alpine'
-            args '-p 3900:3000'
+            args '-p 3010:3000'
         }
     }
 	environment {
@@ -22,6 +22,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
+		input "Frenamos el server?"
+		
             }
         }
     }
